@@ -28,7 +28,7 @@ export class FavoritosService {
     return this.listaFavoritos;
   }
 
-  estaNaLista(animalId: number): boolean {
+  estaNaLista(animalId: string): boolean {
     return this.listaFavoritos().some(a => a.id === animalId);
   }
 
@@ -40,7 +40,7 @@ export class FavoritosService {
     }
   }
 
-  removerFavorito(animalId: number): void {
+  removerFavorito(animalId: string): void {
     this.listaFavoritos.update(lista => lista.filter(a => a.id !== animalId));
   }
 }

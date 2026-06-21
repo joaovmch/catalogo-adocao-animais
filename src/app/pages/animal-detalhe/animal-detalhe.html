@@ -1,4 +1,9 @@
-@if (animal(); as a) {
+@if (carregando()) {
+  <section class="pagina-detalhe">
+    <a routerLink="/itens" class="link-voltar">← Voltar para listagem</a>
+    <p class="nao-encontrado">Carregando...</p>
+  </section>
+} @else if (animal(); as a) {
   <section class="pagina-detalhe">
     <a routerLink="/itens" class="link-voltar">← Voltar para listagem</a>
 

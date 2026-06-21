@@ -16,10 +16,16 @@ export class AnimalForm implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
-  private idEdicao: number | null = null;
+  private idEdicao: string | null = null;
 
   /** Controla se o usuário já tentou enviar o formulário (para exibir erros). */
   enviado = signal(false);
+
+  /** true enquanto busca o registro (modo edição) ou salva no Firebase. */
+  carregando = signal(false);
+
+  /** Mensagem de erro de comunicação com o Firebase, se houver. */
+  erro = signal<string | null>(null);
 
   modoEdicao = computed(() => this.idEdicao !== null);
 
@@ -43,19 +49,25 @@ export class AnimalForm implements OnInit {
       return;
     }
 
-    const animalExistente = this.animalService.obterPorId(Number(idParam));
-    if (!animalExistente) {
-      // id inválido na URL: volta para a listagem em vez de mostrar um form vazio.
-      this.router.navigate(['/itens']);
-      return;
-    }
+    this.idEdicao = idParam;
+    this.carregando.set(true);
 
-    this.idEdicao = animalExistente.id;
-    this.formulario.patchValue(animalExistente);
+    this.animalService.obterPorId(idParam).subscribe({
+      next: (animal) => {
+        this.formulario.patchValue(animal);
+        this.carregando.set(false);
+      },
+      error: () => {
+        // id inválido/inexistente no Firebase: volta para a listagem
+        // em vez de mostrar um form vazio.
+        this.router.navigate(['/itens']);
+      },
+    });
   }
 
   salvar(): void {
     this.enviado.set(true);
+    this.erro.set(null);
 
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
@@ -63,14 +75,21 @@ export class AnimalForm implements OnInit {
     }
 
     const dados = this.formulario.getRawValue() as Omit<Animal, 'id'>;
+    this.carregando.set(true);
 
-    if (this.idEdicao !== null) {
-      this.animalService.atualizar({ id: this.idEdicao, ...dados });
-    } else {
-      this.animalService.adicionar(dados);
-    }
+    const operacao = this.idEdicao !== null
+      ? this.animalService.atualizar({ id: this.idEdicao, ...dados })
+      : this.animalService.adicionar(dados);
 
-    this.router.navigate(['/itens']);
+    operacao.subscribe({
+      next: () => {
+        this.router.navigate(['/itens']);
+      },
+      error: () => {
+        this.carregando.set(false);
+        this.erro.set('Não foi possível salvar o animal. Verifique sua conexão e tente novamente.');
+      },
+    });
   }
 
   cancelar(): void {

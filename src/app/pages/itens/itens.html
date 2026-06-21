@@ -40,7 +40,11 @@
 
   <p class="contagem-filtro">{{ animaisFiltrados().length }} resultado(s) encontrado(s)</p>
 
-  @if (animaisFiltrados().length === 0) {
+  @if (carregando()) {
+    <div class="mensagem-vazia">Carregando animais...</div>
+  } @else if (erro()) {
+    <div class="mensagem-vazia mensagem-erro">{{ erro() }}</div>
+  } @else if (animaisFiltrados().length === 0) {
     <div class="mensagem-vazia">Nenhum item encontrado com os filtros aplicados.</div>
   } @else {
     <div class="grade-cards">

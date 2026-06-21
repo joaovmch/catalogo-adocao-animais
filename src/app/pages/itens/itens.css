@@ -97,6 +97,12 @@
   font-size: 1rem;
 }
 
+.mensagem-erro {
+  background: #fdf0ef;
+  border: 1px dashed #e0a8a3;
+  color: #a13c34;
+}
+
 .grade-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

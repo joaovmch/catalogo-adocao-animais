@@ -1,0 +1,94 @@
+{
+  "animais": [
+    {
+      "nome": "Rex",
+      "especie": "Cachorro",
+      "idade": "2 anos",
+      "porte": "Grande",
+      "statusAdocao": "Disponível",
+      "descricao": "Brincalhão e adora correr no quintal. Já é vacinado.",
+      "foto": "assets/animais/animal1.png"
+    },
+    {
+      "nome": "Mimi",
+      "especie": "Gato",
+      "idade": "1 ano",
+      "porte": "Pequeno",
+      "statusAdocao": "Disponível",
+      "descricao": "Gata carinhosa, gosta de colo e de janelas ensolaradas.",
+      "foto": "assets/animais/animal2.png"
+    },
+    {
+      "nome": "Bolt",
+      "especie": "Cachorro",
+      "idade": "4 anos",
+      "porte": "Médio",
+      "statusAdocao": "Em processo",
+      "descricao": "Já está em processo de adoção com uma família.",
+      "foto": "assets/animais/animal3.png"
+    },
+    {
+      "nome": "Luna",
+      "especie": "Gato",
+      "idade": "3 anos",
+      "porte": "Pequeno",
+      "statusAdocao": "Disponível",
+      "descricao": "Calma e independente, ideal para apartamento.",
+      "foto": "assets/animais/animal4.png"
+    },
+    {
+      "nome": "Thor",
+      "especie": "Cachorro",
+      "idade": "6 anos",
+      "porte": "Grande",
+      "statusAdocao": "Disponível",
+      "descricao": "Cão de guarda gentil, ótimo com crianças.",
+      "foto": "assets/animais/animal5.png"
+    },
+    {
+      "nome": "Nina",
+      "especie": "Coelho",
+      "idade": "8 meses",
+      "porte": "Pequeno",
+      "statusAdocao": "Disponível",
+      "descricao": "Filhote curiosa, precisa de espaço para pular.",
+      "foto": "assets/animais/animal6.png"
+    },
+    {
+      "nome": "Max",
+      "especie": "Cachorro",
+      "idade": "1 ano",
+      "porte": "Médio",
+      "statusAdocao": "Em processo",
+      "descricao": "Animado e cheio de energia, ideal para quem gosta de caminhar.",
+      "foto": "assets/animais/animal7.png"
+    },
+    {
+      "nome": "Bibi",
+      "especie": "Gato",
+      "idade": "5 anos",
+      "porte": "Pequeno",
+      "statusAdocao": "Adotado",
+      "descricao": "Já encontrou uma família e está muito feliz.",
+      "foto": "assets/animais/animal8.png"
+    },
+    {
+      "nome": "Duda",
+      "especie": "Cachorro",
+      "idade": "3 anos",
+      "porte": "Médio",
+      "statusAdocao": "Disponível",
+      "descricao": "Dócil e companheira, adora um cafuné.",
+      "foto": "assets/animais/animal9.png"
+    },
+    {
+      "nome": "Apollo",
+      "especie": "Gato",
+      "idade": "2 anos",
+      "porte": "Médio",
+      "statusAdocao": "Disponível",
+      "descricao": "Esperto e brincalhão, gosta de arranhadores.",
+      "foto": "assets/animais/animal10.png"
+    }
+  ]
+}

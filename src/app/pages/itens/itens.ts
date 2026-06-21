@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CardAnimal } from '../../componentes/card-animal/card-animal';
@@ -12,13 +12,17 @@ import { FavoritosService } from '../../services/favoritos/favoritos';
   templateUrl: './itens.html',
   styleUrl: './itens.css',
 })
-export class Itens {
+export class Itens implements OnInit {
   private readonly animalService = inject(AnimalService);
   private readonly favoritosService = inject(FavoritosService);
   private readonly fb = inject(FormBuilder);
 
   /** Lista completa (sem filtro), vinda direto do service. */
   animais = this.animalService.listar();
+
+  /** Estados vindos do Firebase, para exibir feedback em vez de tela quebrada. */
+  carregando = this.animalService.estaCarregando();
+  erro = this.animalService.obterErro();
 
   /** Form reativo de busca e filtros — nada de @if/array.filter direto no template. */
   filtros = this.fb.group({
@@ -48,6 +52,12 @@ export class Itens {
     });
   }
 
+  ngOnInit(): void {
+    // Busca a lista no Firebase ao entrar na tela (a v1.0 não precisava
+    // disso porque os dados já estavam prontos em memória).
+    this.animalService.carregar();
+  }
+
   /** Lista já filtrada pelos critérios de busca, recalculada automaticamente. */
   animaisFiltrados = computed(() => {
     const { busca, especie, porte, status } = this.valoresFiltro();
@@ -66,7 +76,7 @@ export class Itens {
     this.favoritosService.alternarInteresse(animal);
   }
 
-  jaTemInteresse(animalId: number): boolean {
+  jaTemInteresse(animalId: string): boolean {
     return this.favoritosService.estaNaLista(animalId);
   }
 
@@ -75,9 +85,16 @@ export class Itens {
     if (!confirmar) {
       return;
     }
-    this.animalService.remover(animal.id);
-    // se o animal excluído estava nos favoritos, remove de lá também
-    this.favoritosService.removerFavorito(animal.id);
+
+    this.animalService.remover(animal.id).subscribe({
+      next: () => {
+        // se o animal excluído estava nos favoritos, remove de lá também
+        this.favoritosService.removerFavorito(animal.id);
+      },
+      error: () => {
+        alert('Não foi possível excluir o animal. Tente novamente.');
+      },
+    });
   }
 
   limparFiltros(): void {

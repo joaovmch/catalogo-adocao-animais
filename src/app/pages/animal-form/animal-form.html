@@ -3,6 +3,10 @@
 
   <h2>{{ modoEdicao() ? 'Editar animal' : 'Cadastrar novo animal' }}</h2>
 
+  @if (erro()) {
+    <p class="erro-geral">{{ erro() }}</p>
+  }
+
   <form class="formulario" [formGroup]="formulario" (ngSubmit)="salvar()">
     <label class="campo">
       <span>Nome *</span>
@@ -61,8 +65,8 @@
     </label>
 
     <div class="acoes-form">
-      <button type="submit" class="btn-salvar">
-        {{ modoEdicao() ? 'Salvar alterações' : 'Cadastrar animal' }}
+      <button type="submit" class="btn-salvar" [disabled]="carregando()">
+        {{ carregando() ? 'Salvando...' : (modoEdicao() ? 'Salvar alterações' : 'Cadastrar animal') }}
       </button>
       <button type="button" class="btn-cancelar" (click)="cancelar()">Cancelar</button>
     </div>
