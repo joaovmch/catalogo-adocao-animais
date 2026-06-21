@@ -1,0 +1,35 @@
+<section class="pagina-login">
+  <div class="login-box">
+    <h2>Entrar</h2>
+
+    @if (erro()) {
+      <p class="erro-geral">{{ erro() }}</p>
+    }
+
+    <form class="formulario-login" [formGroup]="formulario" (ngSubmit)="entrar()">
+      <label class="campo">
+        <span>E-mail</span>
+        <input type="email" formControlName="email" placeholder="seu@email.com" />
+        @if (campo.email.invalid && campo.email.touched) {
+          <span class="erro">Informe um e-mail válido.</span>
+        }
+      </label>
+
+      <label class="campo">
+        <span>Senha</span>
+        <input type="password" formControlName="senha" placeholder="••••••••" />
+        @if (campo.senha.invalid && campo.senha.touched) {
+          <span class="erro">A senha é obrigatória.</span>
+        }
+      </label>
+
+      <button type="submit" class="btn-salvar" [disabled]="carregando()">
+        {{ carregando() ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+
+    <p class="link-cadastro">
+      Ainda não tem conta? <a routerLink="/cadastro">Cadastre-se</a>
+    </p>
+  </div>
+</section>

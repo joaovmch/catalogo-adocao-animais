@@ -3,9 +3,21 @@
     <div class="marca">AdotaCat</div>
     <nav class="menu">
       <a routerLink="/home" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-      <a routerLink="/itens" routerLinkActive="ativo">Listagem</a>
-      <a routerLink="/favoritos" routerLinkActive="ativo">Favoritos</a>
+
+      @if (autenticado()) {
+        <a routerLink="/itens" routerLinkActive="ativo">Listagem</a>
+        <a routerLink="/favoritos" routerLinkActive="ativo">Favoritos</a>
+        <a routerLink="/usuarios" routerLinkActive="ativo">Usuários</a>
+      }
+
       <a routerLink="/sobre" routerLinkActive="ativo">Sobre</a>
+
+      @if (autenticado()) {
+        <span class="usuario-logado">{{ nomeUsuario() }}</span>
+        <button type="button" class="btn-sair" (click)="sair()">Sair</button>
+      } @else {
+        <a routerLink="/login" routerLinkActive="ativo">Entrar</a>
+      }
     </nav>
   </header>
 

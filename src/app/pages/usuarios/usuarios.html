@@ -1,0 +1,45 @@
+<section class="pagina-itens">
+  <header class="cabecalho-pagina">
+    <div>
+      <h2>Usuários cadastrados</h2>
+      <p>Total: {{ usuarios().length }}</p>
+    </div>
+  </header>
+
+  @if (carregando()) {
+    <div class="mensagem-vazia">Carregando usuários...</div>
+  } @else if (erro()) {
+    <div class="mensagem-vazia mensagem-erro">{{ erro() }}</div>
+  } @else if (usuarios().length === 0) {
+    <div class="mensagem-vazia">Nenhum usuário cadastrado.</div>
+  } @else {
+    <table class="tabela-usuarios">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (usuario of usuarios(); track usuario.id) {
+          <tr>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td class="acoes">
+              <a [routerLink]="['/usuarios', usuario.id, 'editar']" class="btn-editar">Editar</a>
+              <button
+                type="button"
+                class="btn-excluir"
+                [disabled]="ehUsuarioLogado(usuario)"
+                [title]="ehUsuarioLogado(usuario) ? 'Você não pode excluir sua própria conta' : ''"
+                (click)="excluir(usuario)">
+                Excluir
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

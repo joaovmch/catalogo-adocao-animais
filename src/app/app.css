@@ -48,3 +48,25 @@
   background: #f8fbfa;
   color: #000000;
 }
+
+.usuario-logado {
+  color: #f8fbfa;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 10px;
+}
+
+.btn-sair {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.btn-sair:hover {
+  background: rgba(255, 255, 255, 0.22);
+}

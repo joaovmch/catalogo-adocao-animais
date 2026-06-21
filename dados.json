@@ -90,5 +90,13 @@
       "descricao": "Esperto e brincalhão, gosta de arranhadores.",
       "foto": "assets/animais/animal10.png"
     }
+  ],
+  "usuarios": [
+    {
+      "nome": "Admin",
+      "email": "admin@adotacat.com",
+      "senha": "admin123",
+      "token": "1782087341531-87975a35d206"
+    }
   ]
 }

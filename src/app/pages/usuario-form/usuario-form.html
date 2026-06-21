@@ -1,0 +1,42 @@
+<section class="pagina-form">
+  <a routerLink="/usuarios" class="link-voltar">← Voltar para usuários</a>
+
+  <h2>Editar usuário</h2>
+
+  @if (erro()) {
+    <p class="erro-geral">{{ erro() }}</p>
+  }
+
+  <form class="formulario" [formGroup]="formulario" (ngSubmit)="salvar()">
+    <label class="campo campo-largo">
+      <span>Nome *</span>
+      <input type="text" formControlName="nome" placeholder="Ex: Maria Souza" />
+      @if (campo.nome.invalid && campo.nome.touched) {
+        <span class="erro">Informe o nome (mínimo 2 caracteres).</span>
+      }
+    </label>
+
+    <label class="campo campo-largo">
+      <span>E-mail *</span>
+      <input type="email" formControlName="email" placeholder="email@exemplo.com" />
+      @if (campo.email.invalid && campo.email.touched) {
+        <span class="erro">Informe um e-mail válido.</span>
+      }
+    </label>
+
+    <label class="campo campo-largo">
+      <span>Senha *</span>
+      <input type="password" formControlName="senha" placeholder="Mínimo 4 caracteres" />
+      @if (campo.senha.invalid && campo.senha.touched) {
+        <span class="erro">A senha precisa de pelo menos 4 caracteres.</span>
+      }
+    </label>
+
+    <div class="acoes-form">
+      <button type="submit" class="btn-salvar" [disabled]="carregando()">
+        {{ carregando() ? 'Salvando...' : 'Salvar alterações' }}
+      </button>
+      <button type="button" class="btn-cancelar" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</section>
