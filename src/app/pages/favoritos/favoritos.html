@@ -1,0 +1,20 @@
+<section class="pagina-favoritos">
+  <header class="cabecalho-pagina">
+    <h2>Animais com interesse marcado</h2>
+    <p>Total de itens: {{ favoritos().length }}</p>
+  </header>
+
+  @if (favoritos().length === 0) {
+    <div class="mensagem-vazia">Nenhum item selecionado.</div>
+  } @else {
+    <div class="grade-cards">
+      @for (animal of favoritos(); track animal.id) {
+        <app-card-animal
+          [animal]="animal"
+          [contexto]="'favoritos'"
+          (removerDaLista)="onRemover($event)">
+        </app-card-animal>
+      }
+    </div>
+  }
+</section>

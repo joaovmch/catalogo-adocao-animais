@@ -1,0 +1,45 @@
+<article class="card" [appDestaqueStatus]="animal.statusAdocao">
+  <div class="card-foto">
+    <img [src]="animal.foto || 'assets/animais/placeholder.svg'" [alt]="'Foto de ' + animal.nome" />
+    <span class="badge" [class]="statusClasse">{{ animal.statusAdocao }}</span>
+  </div>
+
+  <div class="card-corpo">
+    <h3>{{ animal.especie | especieIcone }} {{ animal.nome }}</h3>
+    <p class="especie">{{ animal.especie }}</p>
+
+    <ul class="info-lista">
+      <li><strong>Idade:</strong> {{ animal.idade }}</li>
+      <li><strong>Porte:</strong> {{ animal.porte }}</li>
+    </ul>
+
+    <p class="descricao">{{ animal.descricao }}</p>
+
+    <div class="card-acoes">
+      <!-- Botão de ação principal: alterna texto e cor conforme o estado -->
+      @if (contexto === 'listagem') {
+        <button
+          class="btn btn-principal"
+          [class.btn-marcar]="!jaTemInteresse"
+          [class.btn-remover]="jaTemInteresse"
+          [disabled]="animal.statusAdocao === 'Adotado'"
+          (click)="onBotaoPrincipalClick()">
+          {{ animal.statusAdocao === 'Adotado' ? 'Já foi adotado' : rotuloBotaoPrincipal }}
+        </button>
+
+        <div class="card-acoes-secundarias">
+          <a [routerLink]="['/itens', animal.id]" class="btn-link">Ver detalhes</a>
+          <a [routerLink]="['/itens', animal.id, 'editar']" class="btn-link">Editar</a>
+          <button type="button" class="btn-link btn-link-excluir" (click)="onExcluirClick()">Excluir</button>
+        </div>
+      }
+
+      <!-- Na página de favoritos, o botão de remoção/desfazer fica em destaque -->
+      @if (contexto === 'favoritos') {
+        <button class="btn btn-remover" (click)="onRemoverClick()">
+          Remover dos Favoritos
+        </button>
+      }
+    </div>
+  </div>
+</article>

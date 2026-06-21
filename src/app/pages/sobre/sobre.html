@@ -1,0 +1,36 @@
+<section class="pagina-sobre">
+  <h2>Sobre o projeto</h2>
+
+  <div class="bloco">
+    <h3>Aluno</h3>
+    <p>{{ aluno }}</p>
+    <p class="curso">{{ curso }}</p>
+  </div>
+
+  <div class="bloco">
+    <h3>Tema escolhido</h3>
+    <p>{{ tema }}</p>
+  </div>
+
+  <div class="bloco">
+    <h3>Objetivo do sistema</h3>
+    <p>
+      Este sistema simula um catálogo de animais disponíveis para adoção em um
+      abrigo. O usuário pode navegar pela lista de animais, visualizar
+      informações como nome, idade, porte e status de adoção, e marcar
+      interesse nos animais que deseja conhecer melhor. Os animais marcados
+      ficam reunidos na página de Favoritos, permitindo que o usuário
+      acompanhe e gerencie sua lista de interesses antes de entrar em contato
+      com o abrigo.
+    </p>
+  </div>
+
+  <div class="bloco">
+    <h3>Tecnologias usadas</h3>
+    <ul>
+      @for (tec of tecnologias; track tec) {
+        <li>{{ tec }}</li>
+      }
+    </ul>
+  </div>
+</section>

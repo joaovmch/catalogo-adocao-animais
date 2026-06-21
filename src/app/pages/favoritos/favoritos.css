@@ -1,0 +1,36 @@
+.pagina-favoritos {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 50px;
+}
+
+.cabecalho-pagina {
+  margin-bottom: 22px;
+}
+
+.cabecalho-pagina h2 {
+  margin: 0 0 4px;
+  color: #1f2d28;
+}
+
+.cabecalho-pagina p {
+  margin: 0;
+  color: #5a6e66;
+  font-size: 0.9rem;
+}
+
+.mensagem-vazia {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f3f6f4;
+  border: 1px dashed #c7d3cd;
+  border-radius: 12px;
+  color: #5a6e66;
+  font-size: 1rem;
+}
+
+.grade-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}

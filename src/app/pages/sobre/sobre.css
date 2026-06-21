@@ -1,0 +1,49 @@
+.pagina-sobre {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+.pagina-sobre h2 {
+  color: #1f2d28;
+  margin-bottom: 20px;
+}
+
+.bloco {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e3e9e6;
+}
+
+.bloco:last-child {
+  border-bottom: none;
+}
+
+.bloco h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #2e7d4f;
+}
+
+.bloco p {
+  margin: 0;
+  color: #3c4a45;
+  line-height: 1.5;
+}
+
+.curso {
+  font-size: 0.88rem;
+  color: #5a6e66;
+}
+
+.bloco ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #3c4a45;
+}
+
+.bloco li {
+  margin-bottom: 4px;
+}

@@ -1,0 +1,70 @@
+<section class="pagina-form">
+  <a routerLink="/itens" class="link-voltar">← Voltar para listagem</a>
+
+  <h2>{{ modoEdicao() ? 'Editar animal' : 'Cadastrar novo animal' }}</h2>
+
+  <form class="formulario" [formGroup]="formulario" (ngSubmit)="salvar()">
+    <label class="campo">
+      <span>Nome *</span>
+      <input type="text" formControlName="nome" placeholder="Ex: Rex" />
+      @if (campo.nome.invalid && (campo.nome.touched || enviado())) {
+        <span class="erro">Informe o nome (mínimo 2 caracteres).</span>
+      }
+    </label>
+
+    <label class="campo">
+      <span>Espécie *</span>
+      <select formControlName="especie">
+        <option value="Cachorro">Cachorro</option>
+        <option value="Gato">Gato</option>
+        <option value="Coelho">Coelho</option>
+      </select>
+    </label>
+
+    <label class="campo">
+      <span>Idade *</span>
+      <input type="text" formControlName="idade" placeholder="Ex: 2 anos" />
+      @if (campo.idade.invalid && (campo.idade.touched || enviado())) {
+        <span class="erro">Informe a idade.</span>
+      }
+    </label>
+
+    <label class="campo">
+      <span>Porte *</span>
+      <select formControlName="porte">
+        <option value="Pequeno">Pequeno</option>
+        <option value="Médio">Médio</option>
+        <option value="Grande">Grande</option>
+      </select>
+    </label>
+
+    <label class="campo">
+      <span>Status de adoção *</span>
+      <select formControlName="statusAdocao">
+        <option value="Disponível">Disponível</option>
+        <option value="Em processo">Em processo</option>
+        <option value="Adotado">Adotado</option>
+      </select>
+    </label>
+
+    <label class="campo campo-largo">
+      <span>URL da foto (opcional)</span>
+      <input type="text" formControlName="foto" placeholder="assets/animais/animal1.png" />
+    </label>
+
+    <label class="campo campo-largo">
+      <span>Descrição *</span>
+      <textarea formControlName="descricao" rows="4" placeholder="Conte um pouco sobre o animal..."></textarea>
+      @if (campo.descricao.invalid && (campo.descricao.touched || enviado())) {
+        <span class="erro">Descrição precisa de pelo menos 10 caracteres.</span>
+      }
+    </label>
+
+    <div class="acoes-form">
+      <button type="submit" class="btn-salvar">
+        {{ modoEdicao() ? 'Salvar alterações' : 'Cadastrar animal' }}
+      </button>
+      <button type="button" class="btn-cancelar" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</section>

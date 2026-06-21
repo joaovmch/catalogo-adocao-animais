@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#eef1f0" />
+  <g transform="translate(100,90)" fill="#c7d3cd">
+    <circle cx="-28" cy="-30" r="11" />
+    <circle cx="28" cy="-30" r="11" />
+    <circle cx="-46" cy="2" r="10" />
+    <circle cx="46" cy="2" r="10" />
+    <ellipse cx="0" cy="18" rx="34" ry="26" />
+  </g>
+  <text x="100" y="160" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5a6e66">Sem foto</text>
+</svg>

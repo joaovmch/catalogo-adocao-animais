@@ -1,0 +1,62 @@
+<section class="pagina-itens">
+  <header class="cabecalho-pagina">
+    <div>
+      <h2>Animais disponíveis para adoção</h2>
+      <p>Total de itens: {{ animais().length }}</p>
+    </div>
+    <a routerLink="/itens/novo" class="btn-novo">+ Cadastrar animal</a>
+  </header>
+
+  <form class="filtros" [formGroup]="filtros">
+    <input
+      type="text"
+      formControlName="busca"
+      placeholder="Buscar pelo nome..."
+      class="filtro-busca" />
+
+    <select formControlName="especie">
+      <option value="todas">Todas as espécies</option>
+      <option value="Cachorro">Cachorro</option>
+      <option value="Gato">Gato</option>
+      <option value="Coelho">Coelho</option>
+    </select>
+
+    <select formControlName="porte">
+      <option value="todos">Todos os portes</option>
+      <option value="Pequeno">Pequeno</option>
+      <option value="Médio">Médio</option>
+      <option value="Grande">Grande</option>
+    </select>
+
+    <select formControlName="status">
+      <option value="todos">Todos os status</option>
+      <option value="Disponível">Disponível</option>
+      <option value="Em processo">Em processo</option>
+      <option value="Adotado">Adotado</option>
+    </select>
+
+    <button type="button" class="btn-limpar" (click)="limparFiltros()">Limpar filtros</button>
+  </form>
+
+  <p class="contagem-filtro">{{ animaisFiltrados().length }} resultado(s) encontrado(s)</p>
+
+  @if (animaisFiltrados().length === 0) {
+    <div class="mensagem-vazia">Nenhum item encontrado com os filtros aplicados.</div>
+  } @else {
+    <div class="grade-cards">
+      <!--
+        O componente PAI (Itens) passa dados para o filho via @Input()
+        e escuta os eventos emitidos pelo filho via @Output() usando a sintaxe (evento).
+      -->
+      @for (animal of animaisFiltrados(); track animal.id) {
+        <app-card-animal
+          [animal]="animal"
+          [contexto]="'listagem'"
+          [jaTemInteresse]="jaTemInteresse(animal.id)"
+          (marcarInteresse)="onMarcarInteresse($event)"
+          (excluirItem)="onExcluir($event)">
+        </app-card-animal>
+      }
+    </div>
+  }
+</section>

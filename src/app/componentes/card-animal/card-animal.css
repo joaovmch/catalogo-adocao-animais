@@ -1,0 +1,160 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-foto {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #eef1f0;
+}
+
+.card-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-disponivel { background: #2e7d4f; }
+.status-processo   { background: #c98a1c; }
+.status-adotado     { background: #8a8a8a; }
+
+.card-corpo {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-corpo h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #1f2d28;
+}
+
+.especie {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  color: #5a6e66;
+  font-weight: 600;
+}
+
+.info-lista {
+  list-style: none;
+  margin: 4px 0;
+  padding: 0;
+  display: flex;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: #3c4a45;
+}
+
+.info-lista li strong {
+  color: #1f2d28;
+}
+
+.descricao {
+  margin: 6px 0 10px;
+  font-size: 0.85rem;
+  color: #5a6e66;
+  line-height: 1.35;
+  min-height: 38px;
+}
+
+.card-acoes {
+  margin-top: auto;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.btn-marcar {
+  background-color: #2e7d4f;
+  color: #ffffff;
+}
+
+.btn-marcar:hover:not(:disabled) {
+  background-color: #256340;
+}
+
+
+.btn-remover {
+  background-color: #b3402f;
+  color: #ffffff;
+}
+
+.btn-remover:hover:not(:disabled) {
+  background-color: #93331f;
+}
+
+.card-acoes-secundarias {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-link {
+  flex: 1 1 auto;
+  text-align: center;
+  background: none;
+  border: 1px solid #c7d3cd;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #3c4a45;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-link:hover {
+  background: #eef1f0;
+}
+
+.btn-link-excluir {
+  color: #b3402f;
+  border-color: #e2bdb4;
+}
+
+.btn-link-excluir:hover {
+  background: #f8eceb;
+}

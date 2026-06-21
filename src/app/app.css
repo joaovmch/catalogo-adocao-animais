@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: #f7f9f8;
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: #9c2525;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.marca {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.menu {
+  display: flex;
+  gap: 6px;
+}
+
+.menu a {
+  color: #d9e3df;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.menu a.ativo {
+  background: #f8fbfa;
+  color: #000000;
+}

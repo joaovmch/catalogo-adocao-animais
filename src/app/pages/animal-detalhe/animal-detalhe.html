@@ -1,0 +1,36 @@
+@if (animal(); as a) {
+  <section class="pagina-detalhe">
+    <a routerLink="/itens" class="link-voltar">← Voltar para listagem</a>
+
+    <div class="detalhe-card" [appDestaqueStatus]="a.statusAdocao">
+      <div class="detalhe-foto">
+        <img [src]="a.foto || 'assets/animais/placeholder.svg'" [alt]="'Foto de ' + a.nome" />
+      </div>
+
+      <div class="detalhe-info">
+        <h2>{{ a.especie | especieIcone }} {{ a.nome }}</h2>
+        <span class="badge-status" [class]="'status-' + a.statusAdocao.toLowerCase().replace(' ', '-')">
+          {{ a.statusAdocao }}
+        </span>
+
+        <ul class="lista-detalhe">
+          <li><strong>Espécie:</strong> {{ a.especie }}</li>
+          <li><strong>Idade:</strong> {{ a.idade }}</li>
+          <li><strong>Porte:</strong> {{ a.porte }}</li>
+        </ul>
+
+        <p class="descricao-detalhe">{{ a.descricao }}</p>
+
+        <div class="acoes-detalhe">
+          <a [routerLink]="['/itens', a.id, 'editar']" class="btn-salvar">Editar</a>
+          <button type="button" class="btn-cancelar" (click)="excluir()">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="pagina-detalhe">
+    <a routerLink="/itens" class="link-voltar">← Voltar para listagem</a>
+    <p class="nao-encontrado">Animal não encontrado (pode ter sido removido do catálogo).</p>
+  </section>
+}
