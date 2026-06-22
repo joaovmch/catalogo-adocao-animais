@@ -1,67 +1,80 @@
-# AdotaCat — Catálogo de Animais para Adoção
+Catálogo de Adoção de Animais 
+Objetivo
 
-Trabalho de Análise e Desenvolvimento de Sistemas (UNISEP).
-Aluno: João Vitor Michalski
+Esse projeto foi desenvolvido com o objetivo de criar um sistema de catálogo de adoção de animais, onde é possível cadastrar, listar, editar, visualizar e excluir animais disponíveis.
 
-## Sobre o projeto
+A aplicação foi feita utilizando Angular e evolui em etapas durante o semestre, com versionamento no GitHub e uso de Firebase para armazenar os dados.
 
-Sistema de catálogo de animais disponíveis para adoção. Tem cadastro,
-edição, exclusão e busca/filtro dos animais, página de detalhes, lista de
-favoritos e login com controle de acesso. Os dados ficam no Firebase
-Realtime Database.
+Tecnologias utilizadas
+Angular 20+
+TypeScript
+Firebase Realtime Database
+Angular Router
+Standalone Components
+Reactive Forms
+Services
+Guards
+Lazy Loading
+Pipes
+Diretivas
+Git e GitHub
+Funcionalidades
+Cadastro de animais
 
-## Tecnologias
+Permite adicionar novos animais com informações básicas.
 
-- Angular 20 (standalone components, Signals, Reactive Forms)
-- TypeScript
-- Firebase Realtime Database (acesso via HttpClient/REST)
-- Angular Router, com Lazy Loading e Auth Guard nas rotas privadas
+Listagem
 
-## Como rodar
+Exibe todos os animais cadastrados no sistema.
 
-Antes de rodar, é preciso configurar o Firebase: crie um projeto no
-[Firebase Console](https://console.firebase.google.com/), ative o
-Realtime Database e importe o `dados.json` (raiz do projeto) — ele já
-contém os nós `animais` e `usuarios` juntos, então a importação na raiz
-do banco cria os dois de uma vez. Depois cole a URL gerada em
-`src/app/services/animal/animal.ts` e `src/app/services/usuario/usuario.ts`
-(constante `apiUrl` de cada um).
+Edição
 
-O `dados.json` já vem com uma conta de teste em `usuarios`:
-`admin@adotacat.com` / `admin123` (com o `token` já preenchido, no mesmo
-formato gerado pelo cadastro).
+Permite alterar informações dos animais.
 
-```bash
+Exclusão
+
+Remove animais do catálogo.
+
+Detalhes
+
+Mostra informações completas de um animal específico.
+
+Extras
+Filtro e busca
+Validação de formulários com Reactive Forms
+Pipe personalizado
+Diretiva personalizada
+Releases do projeto
+v1.0 – CRUD básico
+Estrutura inicial do projeto
+Layout e navegação
+CRUD completo de animais
+Página inicial
+Pipe e diretiva personalizada
+v2.0 – Firebase
+Integração com Firebase Realtime Database
+Persistência dos dados
+Operações de criar, listar, editar e excluir
+Organização com services
+Lazy Loading
+v3.0 – Usuários e segurança
+Sistema de login
+Cadastro e gerenciamento de usuários
+Controle de sessão
+Proteção de rotas com Auth Guard
+Como rodar o projeto
+git clone https://github.com/joaovmch/catalogo-adocao-animais.git
+cd catalogo-adocao-animais
 npm install
-npm start
-```
+ng serve
 
-Acesse http://localhost:4200
+Depois é só acessar:
+http://localhost:4200
 
-## Link da aplicação online
+Banco de dados
 
-_a publicar_
+Firebase Realtime Database
 
-## Rotas
+Autor
 
-| Rota | Página | Acesso |
-|---|---|---|
-| `/home` | Início | público |
-| `/login` | Entrar | público |
-| `/cadastro` | Criar conta | público |
-| `/sobre` | Sobre | público |
-| `/itens` | Listagem, busca e filtros | logado |
-| `/itens/novo` | Cadastro de animal | logado |
-| `/itens/:id` | Detalhes | logado |
-| `/itens/:id/editar` | Edição de animal | logado |
-| `/favoritos` | Favoritos | logado |
-| `/usuarios` | Listagem de usuários | logado |
-| `/usuarios/:id/editar` | Edição de usuário | logado |
-
-## Releases
-
-- **v1.0** — CRUD em memória, Reactive Forms, Pipe e Diretiva customizados
-- **v2.0** — persistência migrada para o Firebase Realtime Database,
-  tratamento de erros e lazy loading em todas as rotas
-- **v3.0** (atual) — cadastro/login/CRUD de usuários, autenticação por
-  sessão (localStorage), Auth Guard protegendo as rotas privadas
+João Vitor Michalski
